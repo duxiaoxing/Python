@@ -1,14 +1,11 @@
-
-# 廖雪峰博客地址:http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000
-
 # encoding: utf-8
-
+# 廖雪峰博客地址:http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000
 # print "Hello Python"
 
 
 # print 'The quick brown fox','jumps over','the lazy dog'
 
-
+# !/usr/bin env python
 # print 100+200
 # print '100+200'
 
@@ -23,9 +20,167 @@
 # else:
 #     print -a
 
-a = input()
-print '仅支持输入数字', '用户输入是', a
-if a >= 0:
-    print a
-else:
-    print -a
+# a = input()
+# print '仅支持输入数字', '用户输入是', a
+# if a >= 0:
+#     print a
+# else:
+#     print -a
+
+# a = ord('A');
+# print a;
+
+# a = chr(65);
+# print a;
+
+# print u'中文'
+
+# s =  u'中文'.encode('utf-8')
+# print s;
+# print len(s);
+# print 'ABC的长度是:' ,len('ABC');
+
+# print '中文' ,len(u'中文');
+# print '中文GBK' ,len(u'中文'.encode('utf-8'));
+
+# HelloString = 'Hello %s' % 'world';
+# print HelloString;
+
+# HelloString = 'Hi, %s, you have $%d.' % ('Michael', 1000000);
+# print HelloString;
+
+# HelloString = u'Hi ,%s' % (u'Michael');
+# print HelloString; 
+
+# nameList = ['John','Jim'];
+# nameList.insert(0,'index2');
+# nameList.append('0');
+# nameList.append(1);
+# print nameList;
+# print len(nameList);
+# print nameList[-2];
+
+# age = raw_input()
+# if age > 18:
+#     print 'your age is ',age
+#     print '成年'
+# else:
+#     print 'your age is', age
+#     print 'teenager'
+
+# sum = 0
+# for x in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+#     sum = sum + x
+# print sum
+
+# sum = 0
+# for x in range(101):
+#     sum += x;
+# print sum;
+
+# array = range(101);
+# for index in range(len(array)):
+#     print array[index];
+
+# info = {
+#     'name':'john'
+# }
+# info.pop('name');
+# info.setdefault('age':2)
+# print info;
+
+# def my_abs(x):
+#     if not isinstance(x,(int,float)):
+#     raise TypeError('类型错误')
+#     if x >= 0:
+#         return x 
+#     else:
+#         return -x
+
+# print my_abs(-199)
+# print my_abs('a')
+
+
+# import math
+
+# def move(x, y, step, angle=0):
+#     nx = x + step * math.cos(angle)
+#     ny = y - step * math.sin(angle)
+#     return nx, ny
+
+# # x, y = move(100, 100, 60, math.pi / 6);
+# # print x, y
+# r = move(100, 100, 60, math.pi / 6)
+# print r
+
+# def enroll(name, gender):
+#     print 'name:', name
+#     print 'gender:', gender
+
+# enroll('Jim','F')
+
+# def enroll(name, gender, age=6, city='Shenzhen'):
+# 	print 'name:', name
+# 	print 'gender:', gender
+# 	print 'age:', age
+# 	print 'city:', city
+
+# enroll('Sarah','F')
+
+# def add_end(L=None):
+#     if L is None:
+#         L = []
+#     L.append('END')
+#     return L
+
+# add_end();
+# print add_end()
+# print add_end()
+
+# def calc(numbers):
+#     sum = 0
+#     for n in numbers:
+#         sum = sum + n * n
+#     return sum
+
+# print calc([1, 2, 3])
+# print calc([])
+
+# def person(name, age, **kw):
+#     print 'name:', name, 'age:', age, 'other:', kw
+
+# kw = {'city': 'Beijing', 'job': 'Engineer'}
+# # print person('Jack', 24, city=kw['city'], job=kw['job'])
+# print  person('Jack', 24, **kw)
+
+
+# def fact(n):
+#     if n==1:
+#         return 1
+#     return n * fact(n - 1)
+# print fact(5)
+
+# L = ['Michael', 'Sarah', 'Tracy', 'Bob', 'Jack']
+# print L[0:len(L)]
+
+# from collections import Iterable
+
+# L = range(100);
+# print L[0::5]
+
+# print isinstance(L,Iterable)
+
+# print [x * x for x in range(1, 11)]
+# print [x * x for x in range(2,11,2)]
+
+# print [m + n for m in 'ABC'  for n in 'EFG']
+
+# import os
+# print  [d for d in os.listdir('.')]
+
+g = (x * x for x in range(1,10,1))
+while g.next():
+    print g.next()
+# print g.next()
+
+
