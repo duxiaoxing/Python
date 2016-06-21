@@ -50,7 +50,7 @@
 # print HelloString;
 
 # HelloString = u'Hi ,%s' % (u'Michael');
-# print HelloString; 
+# print HelloString;
 
 # nameList = ['John','Jim'];
 # nameList.insert(0,'index2');
@@ -93,7 +93,7 @@
 #     if not isinstance(x,(int,float)):
 #     raise TypeError('类型错误')
 #     if x >= 0:
-#         return x 
+#         return x
 #     else:
 #         return -x
 
@@ -178,9 +178,174 @@
 # import os
 # print  [d for d in os.listdir('.')]
 
-g = (x * x for x in range(1,10,1))
-while g.next():
-    print g.next()
-# print g.next()
+# g = (x * x for x in range(1,10,1))
+# while g.next():
+#     print g.next()
+# # print g.next()
+
+# def fbi(max):
+#     n,a,b = 0,0,1
+#     while n < max:
+#         print b
+#         a,b = b, a + b
+#         n = n + 1
+
+# fbi(6)
 
 
+# def fbi(max):
+#     n,a,b = 0,0,1
+#     while n < max:
+#         yield b
+#         a,b = b, a + b
+#         n = n + 1
+
+# for n in fbi(6):
+#     print n
+
+# f = abs
+# print f(-10)
+
+# def fn(x, y):
+#     return x * 10 + y
+
+# def char2num(s):
+#     return {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9}[s]
+
+
+# def upder(s):
+#     return {'a':'A'}[s]
+
+# print map(upder,'aaa')
+# print map(char2num,'13579')
+
+# print reduce(fn, map(char2num, '13579'))
+
+# print sorted(['bob', 'about', 'Zoo', 'Credit'])
+
+
+# def lazy_sum(*args):
+#     def sum():
+#         ax = 0
+#         for n in args:
+#             ax = ax + n
+#         return ax
+#
+#     return sum
+#
+#
+# f = lazy_sum(1, 3, 5, 7, 9)
+# print f
+# print f()
+
+# 闭包函数
+# def count():
+#     fs = []
+#     for i in range(1, 4, 1):
+#         def f():
+#             return i * i
+#
+#         fs.append(f)
+#     return fs
+
+# def count():
+#     fs = [];
+#     for i in range(1, 4):
+#         def f(j):
+#             def g():
+#                 return j * j
+#
+#             return g
+#
+#         fs.append(f(i))
+#     return fs
+#
+#
+# f1, f2, f3 = count()
+# print f1, f2, f3
+# print f1(), f2(), f3()
+
+# # 匿名函数
+# print map(lambda x: x * x, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+
+# 装饰器
+# def now():
+#     print '2016-06-20'
+#
+# f = now
+# f()
+
+# def log(func):
+#     def wapper(*args, **kwargs):
+#         print 'call_func_name: %s()' % func.__name__
+#         return func(*args, **kwargs)
+#
+#     return wapper
+#
+#
+# @log
+# def now():
+#     print '2016-06-20'
+#
+#
+# now()
+
+# def now():
+#     print '2016-06-20'
+#
+#
+# now = log(now)
+# now()
+
+# 偏函数
+# print int('123456')
+# print int('123456', base=8)
+# print int('123456', 8)
+
+
+# def int2(x, base=2):
+#     return int(x, base)
+#
+#
+# print int2('1000000')
+
+# import functools
+#
+# int2 = functools.partial(int, base=2)
+# print int2('1000000')
+
+# 模块
+# 使用模块
+
+# import sys
+# args = sys.argv
+# print args
+
+# 面向对象
+
+class Student(object):
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def print_score(self):
+        print 'name:%s score:%s ' % (self.name, self.score)
+
+
+Bob = Student('Bob', 99)
+Bob.print_score()
+
+# class Student(object):
+#
+#     def __init__(self, name, score):
+#         self.name = name
+#         self.score = score
+#
+#     def print_score(self):
+#         print '%s: %s' % (self.name, self.score)
+#
+# bart = Student('Bart Simpson', 59)
+# lisa = Student('Lisa Simpson', 87)
+# bart.print_score()
+# lisa.print_score()
