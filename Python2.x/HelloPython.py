@@ -324,17 +324,18 @@
 
 # 面向对象
 
-class Student(object):
-    def __init__(self, name, score):
-        self.name = name
-        self.score = score
+# class Student(object):
+#     def __init__(self, name, score):
+#         self.name = name
+#         self.score = score
+#
+#     def print_score(self):
+#         print 'name:%s score:%s ' % (self.name, self.score)
+#
+#
+# Bob = Student('Bob', 99)
+# Bob.print_score()
 
-    def print_score(self):
-        print 'name:%s score:%s ' % (self.name, self.score)
-
-
-Bob = Student('Bob', 99)
-Bob.print_score()
 
 # class Student(object):
 #
@@ -349,4 +350,104 @@ Bob.print_score()
 # lisa = Student('Lisa Simpson', 87)
 # bart.print_score()
 # lisa.print_score()
+
+# 使用 property
+# class Student(object):
+#     @property
+#     def score(self):
+#         return self.score
+#
+#     @score.setter
+#     def score(self, value):
+#         if not isinstance(value, int):
+#             raise ValueError('score must be an integer !')
+#         if value < 0 or value > 100:
+#             raise ValueError('score must between 0 - 100 !')
+#         self.score = value
+#
+# #
+# s = Student()
+# # s.score = 60
+# # print  s.score
+# s.score = 999
+# print s
+
+class Man(object):
+    def __init__(self):
+        self.birth = 0
+
+    @property
+    def birth(self):
+        return self._birth
+
+    @birth.setter
+    def birth(self, value):
+        self._birth = value
+
+    @property
+    def age(self):
+        return 2016 - self._birth
+
+
+m = Man()
+
+
+# print m.age
+# m.birth = 1991
+# print m.age
+#
+# print dir(Man)
+# print m.__dict__
+# print Man.__dict__
+
+
+# class Fib(object):
+#     def __init__(self):
+#         self.a, self.b = 0, 1  # 初始化两个计数器a，b
+#
+#     def __iter__(self):
+#         return self  # 实例本身就是迭代对象，故返回自己
+#
+#     def next(self):
+#         self.a, self.b = self.b, self.a + self.b  # 计算下一个值
+#         if self.a > 100000:  # 退出循环的条件
+#             raise StopIteration();
+#         return self.a  # 返回下一个值
+#
+#
+# for n in Fib():
+#     print n
+
+
+# class Fib(object):
+#     def __getitem__(self, n):
+#         a, b = 1, 1
+#         for x in range(n):
+#             a, b = b, a + b
+#         return a
+# f = Fib()
+#
+# print f[1]
+# print f[2]
+# print f[3]
+
+# print range(100)[5:10]
+
+# class Chain(object):
+#     def __init__(self, path=''):
+#         self._path = path
+#
+#     def __getattr__(self, path):
+#         return Chain('%s/%s' % (self._path, path))
+#     #
+#     def __str__(self):
+#         return self._path
+# print Chain().status.user.timeline.list
+
+import os
+# print os.name
+# print os.uname()
+# print os.environ
+# print os.getenv('PATH')
+
 
