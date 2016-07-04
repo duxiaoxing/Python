@@ -445,6 +445,41 @@ m = Man()
 # print Chain().status.user.timeline.list
 
 
+# IO编程
+# 文件读写
+# f = open('./HelloPython.txt','r')
+# content = f.read()
+# print content
+# f.close()
+
+
+# try:
+#     f = open('./HelloPython.txt','r')
+#     print f.read()
+# finally:
+#     if f:
+#         f.close()
+
+# with open('./HelloPython.txt','r') as f:
+#     print f.read()
+
+# with open('./HelloPython.txt','r') as f:
+#     for lines in f.readlines():
+#         print (lines.strip())
+
+
+# with open('./HelloPython.txt','w') as f:
+#     f.write('Hello,world!')
+
+# 操作文件和目录
+
+import os
+
+# print os.path.abspath('.')
+print os.path.join('/Users/','.')
+
+
+# print os.path.splitext('./HelloPython.txt')
 
 
 
