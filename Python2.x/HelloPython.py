@@ -444,10 +444,7 @@ m = Man()
 #         return self._path
 # print Chain().status.user.timeline.list
 
-import os
-# print os.name
-# print os.uname()
-# print os.environ
-# print os.getenv('PATH')
+
+
 
 
