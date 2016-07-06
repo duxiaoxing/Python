@@ -391,7 +391,6 @@ class Man(object):
 
 m = Man()
 
-
 # print m.age
 # m.birth = 1991
 # print m.age
@@ -476,10 +475,87 @@ m = Man()
 import os
 
 # print os.path.abspath('.')
-print os.path.join('/Users/','.')
-
+# print os.path.join('/Users/','.')
 
 # print os.path.splitext('./HelloPython.txt')
+# path = './HelloPython'
+# os.makedirs(path)
+# os.rmdir(path)
+# os.rename('Hello.txt','HelloPython.txt')
 
+# for x in os.listdir('.'):
+#     if os.path.isdir(x):
+#         print x
 
+# import string
+#
+# for x in os.listdir('.'):
+#     if -1 != (string.find(x, 'txt')):
+#         print os.path.abspath(x)
 
+# 序列化
+
+# try:
+#     import cPickle as pickle
+# except ImportError:
+#     import pickle
+#
+# # infoFile = open('info.txt','wb')
+# # info = dict(name='bob',age=20,score=88)
+# # pickle.dump(info,infoFile)
+# # infoFile.close()
+#
+# infoFile = open('info.txt','rb')
+# info = pickle.load(infoFile)
+# print info
+# infoFile.close()
+
+# import json
+#
+# infoFile = open('info.txt', 'wb')
+# info = dict(name='中文', age=20, score=88)
+# info_string = json.dumps(info)
+# # print info_string
+#
+# info_json = json.loads(info_string)
+# print "info_json:", info_json
+
+# # 多进程
+# # multiprocessing.py
+#
+# import os
+#
+# print 'Process (%s) start...' % os.getpid()
+# pid = os.fork()
+# if pid == 0:
+#     print 'I am child process (%s) and my parent is %s.' % (os.getpid(), os.getppid())
+# else:
+#     print 'I (%s) just created a child process (%s).' % (os.getpid(), pid)
+
+# 网络编程
+
+# 导入socket库:
+import socket
+# 创建一个socket:
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# 建立连接:
+s.connect(('www.sina.com.cn', 80))
+# 发送数据:
+s.send('GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n')
+# 接收数据:
+buffer = []
+while True:
+    # 每次最多接收1k字节:
+    d = s.recv(1024*1)
+    if d:
+        buffer.append(d)
+    else:
+        break
+data = ''.join(buffer)
+# 关闭连接:
+s.close()
+header, html = data.split('\r\n\r\n', 1)
+print header
+# 把接收的数据写入文件:
+with open('sina.html', 'wb') as f:
+    f.write(html)
