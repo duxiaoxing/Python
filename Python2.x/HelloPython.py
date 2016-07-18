@@ -371,6 +371,8 @@
 # # print  s.score
 # s.score = 999
 # print s
+import bs4
+
 
 class Man(object):
     def __init__(self):
@@ -390,6 +392,7 @@ class Man(object):
 
 
 m = Man()
+
 
 # print m.age
 # m.birth = 1991
@@ -534,28 +537,120 @@ import os
 
 # 网络编程
 
-# 导入socket库:
-import socket
-# 创建一个socket:
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# 建立连接:
-s.connect(('www.sina.com.cn', 80))
-# 发送数据:
-s.send('GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n')
-# 接收数据:
-buffer = []
-while True:
-    # 每次最多接收1k字节:
-    d = s.recv(1024*1)
-    if d:
-        buffer.append(d)
-    else:
-        break
-data = ''.join(buffer)
-# 关闭连接:
-s.close()
-header, html = data.split('\r\n\r\n', 1)
-print header
-# 把接收的数据写入文件:
-with open('sina.html', 'wb') as f:
-    f.write(html)
+# # 导入socket库:
+# import socket
+# # 创建一个socket:
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# # 建立连接:
+# s.connect(('www.sina.com.cn', 80))
+# # 发送数据:
+# s.send('GET / HTTP/1.1\r\nHost: www.sina.com.cn\r\nConnection: close\r\n\r\n')
+# # 接收数据:
+# buffer = []
+# while True:
+#     # 每次最多接收1k字节:
+#     d = s.recv(1024*1)
+#     if d:
+#         buffer.append(d)
+#     else:
+#         break
+# data = ''.join(buffer)
+# # 关闭连接:
+# s.close()
+# header, html = data.split('\r\n\r\n', 1)
+# print header
+# # 把接收的数据写入文件:
+# with open('sina.html', 'wb') as f:
+#     f.write(html)
+
+# Beautiful Soup 的用法
+
+from bs4 import BeautifulSoup
+from bs4 import element
+
+# html = """
+# <html><head><title>The Dormouse's story</title></head>
+# <body>
+# <p class="title" name="dromouse"><b>The Dormouse's story</b></p>
+# <p class="story">Once upon a time there were three little sisters; and their names were
+# <a href="http://example.com/elsie" class="sister" id="link1"><!-- Elsie --></a>,
+# <a href="http://example.com/lacie" class="sister" id="link2">Lacie</a> and
+# <a href="http://example.com/tillie" class="sister" id="link3">Tillie</a>;
+# and they lived at the bottom of a well.</p>
+# <p class="story">...</p>
+# """
+
+soup = BeautifulSoup(open('index.html'), 'lxml')
+# print soup.prettify()
+# print soup.p.string
+# print soup.a
+# print soup.title
+# print soup.head
+# print soup.p
+
+# print type(soup.a)
+# print soup.name
+# print soup.head.name
+# print soup.p.attrs
+# print soup.p['class']
+# print soup.p['name']
+# print soup.p.string
+# print type(soup.p.string)
+
+# print soup.a
+# print soup.a['class']
+# print soup.a.string
+# print soup.a['href']
+
+# print type(soup.a.string)
+
+# if type(soup.a.string) == bs4.element.Comment:
+#     print soup.a.string
+
+# 直接子节点
+# print soup.head.contents[0]
+# print soup.head.children
+# for child in soup.body.children:
+#     print child
+
+# 所有子孙节点
+
+# for child in soup.descendants:
+#     print child
+
+# 父节点
+# p = soup.p
+# print p.parent.name
+
+# 全部父节点
+
+# content = soup.head.title.string
+# for parent in content.parents:
+#     print parent.name
+
+# 兄弟节点
+# print soup.p.next_sibling
+# print soup.p.pre_sibling
+# print soup.p.next_sibling.next_sibling
+
+# # 全部兄弟节点
+# for sibling in soup.p.next_siblings:
+#     print sibling
+
+# 搜索文档树
+# print soup.find_all('a')
+import re
+
+
+# print soup.find_all(['a', 'b'])
+
+# for tag in soup.find_all(re.compile("^b")):
+#     print(tag.name)
+
+# print soup.find_all(["a", "b"])
+
+# for tag in soup.find_all(True):
+#     print(tag.name)
+
+def has_class_but_no_id(tag):
+    return tag.has_attr('class') and not tag.has_attr('id')
