@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>StartInterval</key>
+<!--    每隔1800s执行一次-->
+	<integer>1800</integer>
+	<key>Label</key>
+<!--    任务ID-->
+	<string>com.svn.autoupdate</string>
+	<key>Program</key>
+<!--    执行文件路径-->
+	<string>/Users/duxiaoxing/shell/run.sh</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/duxiaoxing/shell/run-err.log</string>
+</dict>
+</plist>
