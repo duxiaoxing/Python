@@ -8,7 +8,7 @@ c = conn.cursor()
 print c
 # Create table
 c.execute('''CREATE TABLE stocks
-             (date text, trans text, symbol text, qty real, price real)''')
+             (date TEXT, trans TEXT, symbol TEXT, qty REAL, price REAL)''')
 
 # Insert a row of data
 c.execute("INSERT INTO stocks VALUES ('2006-01-05','BUY','RHAT',100,35.14)")
